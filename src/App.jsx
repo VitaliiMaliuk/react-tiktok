@@ -17,9 +17,15 @@ function App() {
   return (
     <div className="app">
       <div className="container">
-        {videos.map((video, index) => {
+        {videos.map((video) => {
           return (
-            <Video url={video.url} key={index}/>
+            <Video
+              url={video.url}
+              key={video.url}
+              channel={video.channel}
+              description={video.description}
+              song={video.song}
+            />
           );
         })}
       </div>
