@@ -1,32 +1,43 @@
-import React, { useState } from 'react'
-import FavoriteIcon from './icons/FavoriteIcon'
-import FavoriteBorderIcon from './icons/FavoriteIconBorder'
-import MessageIcon from './icons/Message'
-import ShareIcon from './icons/Share'
-import './Footerright.css'
+import React, { useState } from "react";
+import FavoriteIcon from "./icons/FavoriteIcon";
+import FavoriteBorderIcon from "./icons/FavoriteIconBorder";
+import MessageIcon from "./icons/Message";
+import ShareIcon from "./icons/Share";
+import "./Footerright.css";
 
 function VideoSidebar({ likes, shares, messages }) {
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(likes);
   return (
-      <div className="footer-right">
-          <div className="sidebar-icon">
-              <FavoriteBorderIcon
-                  style={{ width: '40px', height: '40px' }}
-              />
-              <p>{likes}</p>
-          </div>
-          <div className="sidebar-icon">
-              <MessageIcon style={{ width: '40px', height: '40px' }} />
-              <p>{messages}</p>
-          </div>
-          <div className="sidebar-icon record-below">
-              <ShareIcon style={{ width: '40px', height: '40px' }} />
-              <p>{shares}</p>
-          </div>
-          <div className="sidebar-icon record">
-              <img src="https://static.thenounproject.com/png/934821-200.png" />
-          </div>
+    <div className="footer-right">
+      <div className="sidebar-icon">
+        {liked ? (
+          <FavoriteIcon style={{ width: "40px", height: "40px" }} />
+        ) : (
+          <FavoriteBorderIcon
+            style={{ width: "40px", height: "40px" }}
+            onClick={() => {
+              setLiked(true);
+              setLikeCount((likes) => likes + 1);
+            }}
+          />
+        )}
+
+        <p>{likeCount}</p>
       </div>
-  )
+      <div className="sidebar-icon">
+        <MessageIcon style={{ width: "40px", height: "40px" }} />
+        <p>{messages}</p>
+      </div>
+      <div className="sidebar-icon record-below">
+        <ShareIcon style={{ width: "40px", height: "40px" }} />
+        <p>{shares}</p>
+      </div>
+      <div className="sidebar-icon record">
+        <img src="https://static.thenounproject.com/png/934821-200.png" alt="record"/>
+      </div>
+    </div>
+  );
 }
 
-export default VideoSidebar
+export default VideoSidebar;

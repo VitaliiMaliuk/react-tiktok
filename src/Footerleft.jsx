@@ -2,7 +2,7 @@ import React from "react";
 import "./FooterLeft.css";
 import MusicNoteIcon from "./icons/MusicNote";
 
-function FooterLeft({channel, description, song}) {
+function FooterLeft({ channel, description, song }) {
   return (
     <div className="footer-left">
       <div className="text">
