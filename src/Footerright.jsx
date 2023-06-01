@@ -7,23 +7,23 @@ import "./Footerright.css";
 
 function VideoSidebar({ likes, shares, messages }) {
   const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(likes);
+  
   return (
     <div className="footer-right">
       <div className="sidebar-icon">
         {liked ? (
-          <FavoriteIcon style={{ width: "40px", height: "40px" }} />
+          <FavoriteIcon
+            style={{ width: "40px", height: "40px" }}
+            onClick={(e) => setLiked(false)}
+          />
         ) : (
           <FavoriteBorderIcon
             style={{ width: "40px", height: "40px" }}
-            onClick={() => {
-              setLiked(true);
-              setLikeCount((likes) => likes + 1);
-            }}
+            onClick={(e) => setLiked(true)}
           />
         )}
 
-        <p>{likeCount}</p>
+        <p>{liked ? likes + 1 : likes}</p>
       </div>
       <div className="sidebar-icon">
         <MessageIcon style={{ width: "40px", height: "40px" }} />
@@ -34,7 +34,10 @@ function VideoSidebar({ likes, shares, messages }) {
         <p>{shares}</p>
       </div>
       <div className="sidebar-icon record">
-        <img src="https://static.thenounproject.com/png/934821-200.png" alt="record"/>
+        <img
+          src="https://static.thenounproject.com/png/934821-200.png"
+          alt="record"
+        />
       </div>
     </div>
   );
